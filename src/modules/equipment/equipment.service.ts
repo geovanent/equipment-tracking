@@ -41,6 +41,10 @@ export class EquipmentService {
   async checkOutEquipment(id: number, jobId: string): Promise<Equipment> {
     const equipment = await this.equipmentRepository.findOne({ where: { id } });
 
+    if (!equipment) {
+      throw new BadRequestException('Equipment does not exist');
+    }
+
     if (equipment.status === 'checked out') {
       throw new BadRequestException('Equipment is already checked out');
     }
@@ -54,6 +58,10 @@ export class EquipmentService {
 
   async returnEquipment(id: number, location: string): Promise<Equipment> {
     const equipment = await this.equipmentRepository.findOne({ where: { id } });
+
+    if (!equipment) {
+      throw new BadRequestException('Equipment does not exist');
+    }
 
     if (equipment.status !== 'checked out') {
       throw new BadRequestException('Equipment is not checked out');

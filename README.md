@@ -11,29 +11,26 @@
 
 Equipment Tracking API was built with [Nest](https://github.com/nestjs/nest) framework TypeScript.
 
-```
-Project Structure
-
-src/
-|-- equipment/
-|   |-- dto/
-|       |-- create-equipment.dto.ts
-|   |-- entities/
-|       |-- equipment.entity.ts
-|   |-- equipment.controller.ts
-|   |-- equipment.module.ts
-|   |-- equipment.service.ts
-|-- app.module.ts
-|-- main.ts
-```
+## Documentation
+- This project use swagger to document API
+- class-validator to validate fields
+- docker & docker-compose
+- TypeORM with postgres
+- Coverage 90%
+- Health Check (for loadbalancer or kubernentes)
 
 ## Installation
 
 ```bash
-$ npm install
-
 # copy envs
 $ cp .env-example .env
+
+# generate secret to jwt (update your .env)
+$ openssl rand -hex 32
+
+# install dependencies
+$ npm install
+
 ```
 
 ## Running the app
@@ -71,14 +68,6 @@ $ npm run test:e2e
 # test coverage
 $ npm run test:cov
 ```
-
-## Documentation
-- This project use swagger to document API
-- class-validator to validate fields
-- docker & docker-compose
-- TypeORM with postgres
-- Coverage 90%
-- Health Check (for loadbalancer or kubernentes)
 
 ## License
 
