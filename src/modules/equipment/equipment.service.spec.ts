@@ -35,5 +35,4 @@ describe('EquipmentService', () => {
       expect(await service.findAll()).toEqual(testEquipment);
     });
   });
-
 });

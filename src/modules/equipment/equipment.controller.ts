@@ -1,7 +1,16 @@
-import { Controller, Get, Post, Param, Body } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Param,
+  Body,
+  UsePipes,
+  ValidationPipe,
+} from '@nestjs/common';
 import { ApiTags, ApiOkResponse, ApiBadRequestResponse } from '@nestjs/swagger';
 import { EquipmentService } from './equipment.service';
 import { Equipment } from './equipment.entity';
+import { CreateEquipmentDto } from './create-equipment.dto';
 
 @ApiTags('equipment')
 @Controller('equipment')
@@ -12,6 +21,12 @@ export class EquipmentController {
   @ApiOkResponse({ type: [Equipment] })
   findAll(): Promise<Equipment[]> {
     return this.equipmentService.findAll();
+  }
+
+  @Post()
+  @UsePipes(new ValidationPipe())
+  create(@Body() createEquipmentDto: CreateEquipmentDto): Promise<Equipment> {
+    return this.equipmentService.create(createEquipmentDto);
   }
 
   @Post(':id/checkout')
