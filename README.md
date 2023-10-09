@@ -64,6 +64,8 @@ $ npm run test:cov
 - class-validator to validate fields
 - docker & docker-compose
 - TypeORM with postgres
+- Coverage 90%
+- Health Check (for loadbalancer or kubernentes)
 
 ## License
 
