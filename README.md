@@ -9,7 +9,7 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript.
+Equipment Tracking API was built with [Nest](https://github.com/nestjs/nest) framework TypeScript.
 
 ```
 Project Structure
@@ -31,11 +31,18 @@ src/
 
 ```bash
 $ npm install
+
+# copy envs
+$ cp .env-example .env
 ```
 
 ## Running the app
 
 ```bash
+# How to run without docker.
+# You can just use the database in docker: 
+# docker-compose up postgres -d
+
 # development
 $ npm run start
 
@@ -44,6 +51,12 @@ $ npm run start:dev
 
 # production mode
 $ npm run start:prod
+
+######### With Docker #########
+$ docker-compose up -d
+
+# Just open your browser to:
+http://localhost:3000/swagger
 ```
 
 ## Test
