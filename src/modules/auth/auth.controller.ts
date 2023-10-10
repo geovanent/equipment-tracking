@@ -7,7 +7,7 @@ import {
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { AuthCredentialsDto } from './auth-credentials.dto';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBody, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('Auth')
 @Controller('auth')
@@ -15,6 +15,10 @@ export class AuthController {
   constructor(private authService: AuthService) {}
 
   @Post('login')
+  @ApiBody({
+    description: 'Login',
+    type: AuthCredentialsDto,
+  })
   async login(@Body(ValidationPipe) authCredentialsDto: AuthCredentialsDto) {
     const user = await this.authService.validateUser(
       authCredentialsDto.email,
